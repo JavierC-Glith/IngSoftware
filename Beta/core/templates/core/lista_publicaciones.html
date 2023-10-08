@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Publicaciones</title>
+</head>
+<body>
+    <h1>Lista de Publicaciones</h1>
+    <ul>
+        {% for publicacion in publicaciones %}
+            <li>
+                <a href="{% url 'detalle_publicacion' publicacion.id %}">
+                    <strong>{{ publicacion.titulo }}</strong>
+                </a><br>
+                {{ publicacion.contenido|slice:":200" }}...<br>
+                Fecha de creación: {{ publicacion.fecha_creacion }}<br>
+                Autor: {{ publicacion.autor }}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_publicacion' %}">Crear Nueva Publicación</a>
+</body>
+</html>
+
+
